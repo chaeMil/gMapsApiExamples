@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GMapsApiExamples.iml" filepath="$PROJECT_DIR$/GMapsApiExamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gMapsApiExamples.iml" filepath="$PROJECT_DIR$/gMapsApiExamples.iml" />
     </modules>
   </component>
 </project>

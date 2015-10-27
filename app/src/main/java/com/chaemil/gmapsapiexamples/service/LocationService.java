@@ -32,9 +32,9 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     public static final int LOCATION_INTERVAL = 800;
     public static final int LOCATION_FASTEST_INTERVAL = 400;
 
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApiClient googleApiClient;
     private ExampleApp app;
-    private LocationRequest mLocationRequest;
+    private LocationRequest locationRequest;
     private boolean backgroundUpdate = true;
     private boolean receivingUpdates = false;
 
@@ -45,7 +45,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
         app = (ExampleApp) getApplication();
 
         buildGoogleApiClient();
-        mGoogleApiClient.connect();
+        googleApiClient.connect();
 
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -159,7 +159,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
@@ -167,22 +167,22 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
     }
 
     protected void createLocationRequest(int interval, int fastestInterval, int accuracy) {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(interval);
-        mLocationRequest.setFastestInterval(fastestInterval);
-        mLocationRequest.setPriority(accuracy);
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(interval);
+        locationRequest.setFastestInterval(fastestInterval);
+        locationRequest.setPriority(accuracy);
     }
 
     protected void startLocationUpdates() {
         receivingUpdates = true;
         LocationServices.FusedLocationApi.requestLocationUpdates(
-                mGoogleApiClient, mLocationRequest, this);
+                googleApiClient, locationRequest, this);
     }
 
     protected void stopLocationUpdates() {
         receivingUpdates = false;
         LocationServices.FusedLocationApi.removeLocationUpdates(
-                mGoogleApiClient, this);
+                googleApiClient, this);
     }
 
     public class MyBinder extends Binder {
