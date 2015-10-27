@@ -79,9 +79,9 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback {
         map.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Log.d("marker.id", marker.getId());
-                Log.d("marker.title", marker.getTitle());
-                Log.d("marker.snippet", marker.getSnippet());
+                Log.d("marker.id", marker.getId());  //m0
+                Log.d("marker.title", marker.getTitle()); //Milošovo
+                Log.d("marker.snippet", marker.getSnippet());  //Víte co je to pussy?
             }
         });
 
